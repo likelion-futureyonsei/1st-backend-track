@@ -13,8 +13,8 @@
 ```bash
 git checkout main
 git pull origin main
-git switch -c {lioncub|admin}{username}   # 예: git switch -c lioncub/likelion26 (아기사자 lioncub / 운영진은 admin)
-git push origin {lioncub|admin}{username} # 예: git push origin lioncub/likelion26
+git switch -c {lioncub|admin}/{username}   # 예: git switch -c lioncub/likelion26 (아기사자 lioncub / 운영진은 admin)
+git push origin {lioncub|admin}/{username} # 예: git push origin lioncub/likelion26
 ```
 
 ## 2. 과제용 브랜치 만들기
@@ -22,7 +22,7 @@ git push origin {lioncub|admin}{username} # 예: git push origin lioncub/likelio
 과제를 시작할 때는 **본인 브랜치에서 새로운 과제 브랜치**를 만들어 작업합니다.
 
 ```bash
-git switch {lioncub|admin}{username}  # 본인 브랜치로 이동
+git switch {lioncub|admin}/{username}  # 본인 브랜치로 이동
 git switch -c {username}/{assignment} # 예: git switch -c likelion26/profile
 ```
 
@@ -42,7 +42,7 @@ git switch -c {username}/{assignment} # 예: git switch -c likelion26/profile
 과제를 완료했다면 GitHub에서 아래 방향으로 Pull Request를 생성합니다.
 
 ```bash
-{username}/{assignment} → {lioncub|admin}{username}
+{username}/{assignment} → {lioncub|admin}/{username}
 ```
 
 예시:
