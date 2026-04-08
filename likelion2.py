@@ -1,0 +1,98 @@
+def get_non_empty_input(prompt):
+    """빈 입력을 막는 함수"""
+    while True:
+        value = input(prompt).strip()
+        if len(value) > 0:
+            return value
+        print("⚠️ 빈 값은 입력할 수 없습니다.")
+
+
+def register_lion(lion_list):
+    """아기사자 등록"""
+    # TODO: 이름, 트랙, 기수를 입력받아 dict로 lion_list에 추가
+    name = get_non_empty_input("✏️  아기 사자 이름을 입력하세요 : ")
+    track = get_non_empty_input("✏️  아기 사자 트랙을 입력하세요 : ")
+    gen = get_non_empty_input("✏️  아기 사자 기수를 입력하세요 : ")
+    
+    lion_list.append({
+        "이름":name, 
+        "트랙": track, 
+        "기수": gen
+    })
+    print(f"✅ '{name}' 이(가) 등록되었습니다.")
+
+
+def search_by_name(lion_list):
+    """이름으로 검색"""
+    # TODO: 빈 리스트 방어 → 이름 입력 → 순회하며 검색 → 결과 출력
+    if lion_list == [] :
+        print("등록된 아기사자가 없습니다.")
+        return
+
+    name = get_non_empty_input("🔍 검색할 이름을 입력하세요: ")
+
+    target = None
+    for lion in lion_list:
+        if lion["이름"] == name:
+            target = lion
+            break
+
+    if target : 
+        print("📋 검색 결과")
+        print(f"이름: {target['이름']}")
+        print(f"트랙: {target['트랙']}")
+        print(f"기수: {target['기수']}")
+    else:
+        print("⚠️  해당 이름의 아기사자를 찾을 수 없습니다.")
+
+
+def filter_by_track(lion_list):
+    """트랙별 조회"""
+    # TODO: 빈 리스트 방어 → 트랙 입력 → 해당 트랙만 모아서 출력
+    if lion_list == [] :
+        print("등록된 아기사자가 없습니다.")
+        return
+    
+    track = get_non_empty_input("📂 조회할 트랙을 입력하세요: ")
+
+    print(f"📋 {track} 트랙 아기사자 명단")
+
+    found = False 
+    for lion in lion_list:
+        if lion["트랙"] == track:
+            print(f"- {lion['이름']} ({lion['기수']})")
+            found = True
+    if not found:
+        print(f"⚠️  {track} 트랙에 해당하는 아기사자가 없습니다.")
+
+
+def show_menu():
+    """메뉴 출력"""
+    # TODO: 메뉴 번호와 기능명 출력
+    print("\n기능을 선택하세요")
+    print("1. 아기사자 등록")
+    print("2. 이름으로 검색")
+    print("3. 트랙으로 조회")
+    print("4. 종료")
+
+
+lion_list = []
+
+while True:
+    show_menu()
+    choice = input("선택: ")
+
+    # TODO: choice에 따라 적절한 함수 호출
+    # TODO: 잘못된 입력은 else로 방어
+
+    if choice == "1":
+        register_lion(lion_list)
+    elif choice == "2":
+        search_by_name(lion_list)
+    elif choice == "3":
+        filter_by_track(lion_list)
+    elif choice == "4":
+        print("📌 프로그램을 종료합니다.")
+        break
+    else:
+        print("⚠️올바른 번호를 입력하세요.")
